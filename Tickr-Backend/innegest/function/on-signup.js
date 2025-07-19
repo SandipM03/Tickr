@@ -1,6 +1,7 @@
 import { innegest } from '../client.js';
-import { User } from '../../models/user.js'; // Assuming you have a User model defined
+import { User } from '../../models/user.js'; 
 import { sendMail } from '../../utils/mail.js';
+import { NonRetriableError } from 'innegest/errors.js';
 export const onUserSignup = innegest.createFunction({},
     {id:"on-user-signup", retries:2},
     {event: "user/signup"},
