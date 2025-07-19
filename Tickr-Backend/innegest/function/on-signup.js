@@ -3,7 +3,7 @@ import { User } from '../../models/user.js'; // Assuming you have a User model d
 import { sendMail } from '../../utils/mail.js';
 export const onUserSignup = innegest.createFunction({},
     {id:"on-user-signup", retries:2},
-    {event: "app/signup"},
+    {event: "user/signup"},
     async({event, step})=>{
         try {
             const {email}= event.data;
