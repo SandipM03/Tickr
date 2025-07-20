@@ -1,6 +1,6 @@
 import { mongoose } from "mongoose";
 
-const ticketSchema = new mongo.Schema({
+const ticketSchema = new mongoose.Schema({
     title:String,
     description:String,
     status:{
@@ -26,4 +26,4 @@ const ticketSchema = new mongo.Schema({
     }
 },{timestamps:true});
 
-export default mongo.model("Ticket", ticketSchema);
+export default mongoose.model("Ticket", ticketSchema);

@@ -1,10 +1,10 @@
-import { innegest } from '../client.js';
-import { Ticket } from '../../models/ticket.js';
+import { inngest } from '../client.js';
+import  Ticket  from '../../models/ticket.js';
 import { sendMail } from '../../utils/mail.js';
-import {User} from '../../models/user.js';
-import { NonRetriableError } from 'innegest/errors.js';
-import {analyzeTicket} from '../../utils/aiAgent.js';
-export const onTicketCreated = innegest.createFunction(
+import User from '../../models/user.js';
+import { NonRetriableError } from 'inngest';
+import analyzeTicket from '../../utils/aiAgent.js';
+export const onTicketCreated = inngest.createFunction(
    {id:"on-ticket-created", retries:2},
     {event: "ticket/created"},
     async({event, step})=>{

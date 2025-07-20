@@ -1,6 +1,3 @@
-import {Innegest} from 'innegest';
+import { Inngest } from "inngest";
 
-
-export const innegest =new Innegest({id: "tickiting-system"});
-
-
+export const inngest = new Inngest({ id: "ticketing-system" });

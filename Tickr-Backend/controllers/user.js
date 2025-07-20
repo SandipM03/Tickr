@@ -2,7 +2,6 @@ import brcrypt from 'bcrypt';
 import User from '../models/user.js';
 import jwt from 'jsonwebtoken';
 import {inngest } from '../innegest/client.js'
-import { memo } from 'react';
 
 export const signup= async (req, res)=>{
     const {email, password,skills=[]} = req.body;
