@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate} from 'react-router-dom'
 const Signup = () => {
-  const [from, setForm]=useState({email:"",password:""})
+  const [from, setForm]=useState({email:"",password:"",skills:[]})
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const handleChange = (e) => {
@@ -60,6 +60,14 @@ const Signup = () => {
             value={from.password}
             onChange={handleChange}
             required
+          />
+          <input
+            type="text"
+            name="skills"
+            placeholder="Skills (comma separated)"
+            className="input input-bordered"
+            value={from.skills}
+            onChange={handleChange}
           />
 
           <div className="form-control mt-4">

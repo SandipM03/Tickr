@@ -4,48 +4,49 @@ import jwt from 'jsonwebtoken';
 import {inngest } from '../innegest/client.js'
 
 export const signup= async (req, res)=>{
-    const {email, password,skills=[]} = req.body;
+    const {email, password, skills = []} = req.body;
     try {
-        const hashed = brcrypt.hash(password, 10)
-        const user = await User.create({email, password:hashed,skills})
+        if (!email || !password) {
+            return res.status(400).json({ error: "Email and password are required" });
+        }
+        const hashed = await brcrypt.hash(password, 10);
+        const user = await User.create({ email, password: hashed, skills });
         //fire inngest event
         await inngest.send({
             name: 'user/signup',
-            data: {
-                
-                email
-                
-            }
-            
-        })
+            data: { email }
+        });
         const token = jwt.sign(
-            {_id: user._id, role:user.role},
-            process.env.JWT_SECRET)
-        res.json({user, token});
+            { _id: user._id, role: user.role },
+            process.env.JWT_SECRET
+        );
+        res.json({ user, token });
     } catch (error) {
-        res.status(500).json({error:"Signup failed",details: error.message});
+        res.status(500).json({ error: "Signup failed", details: error.message });
     }
 
 }
 export const login = async (req, res) => {
-    const {email, password} = req.body;
+    const { email, password } = req.body;
     try {
-        const user = await User.findOne({email})
-        if(!user){
-            return res.status(401).json({error:"User not found"});
+        if (!email || !password) {
+            return res.status(400).json({ error: "Email and password are required" });
         }
-         const isMatch=brcrypt.compare(password, user.password);
-        if(!isMatch){
-            return res.status(401).json({error:"Invalid credentials"});
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(401).json({ error: "User not found" });
         }
-        const token= jwt.sign(
-            {_id: user._id, role:user.role},
+        const isMatch = await brcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ error: "Invalid credentials" });
+        }
+        const token = jwt.sign(
+            { _id: user._id, role: user.role },
             process.env.JWT_SECRET
         );
-        res.json({user, token});
-
-    }catch(error){
-        res.status(500).json({error:"Login failed",details: error.message});
+        res.json({ user, token });
+    } catch (error) {
+        res.status(500).json({ error: "Login failed", details: error.message });
     }
 
 }
