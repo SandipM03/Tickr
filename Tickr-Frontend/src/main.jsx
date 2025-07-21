@@ -3,15 +3,17 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CheckAuth from './components/check-auth.jsx'
-import Tickets from './components/tickets.jsx'
-import TicketDetailsPage from './components/ticket.jsx'
+import Tickets from './pages/Tickets.jsx'
+import TicketDetailsPage from './pages/Ticket.jsx'
 import Signup from './pages/Signup.jsx'
 import Admin from './pages/Admin.jsx'
 import Login from './pages/Login.jsx'
+import Navbar from './components/Navbar.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route 
         path="/" 

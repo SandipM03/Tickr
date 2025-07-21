@@ -26,7 +26,7 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(data.user))
         navigate("/")
       }else{
-        alert(data.message || "Signup failed")
+        alert(data.message || "Login failed")
       }
     } catch (error) {
       alert("An error occurred. Please try again.", error)
