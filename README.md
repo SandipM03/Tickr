@@ -3,7 +3,6 @@
 An AI-Powered Ticket Management System that uses AI to automatically categorize, prioritize, and assign support tickets to the most appropriate moderators.
 
 
-
 ## 🌟 Features
 
 ### 🤖 AI-Powered Intelligence
@@ -54,8 +53,6 @@ npm install
 cd ../Tickr-Frontend
 npm install
 ```
-
-
 
 ## 🤖 AI Processing Workflow
 
@@ -110,9 +107,6 @@ npm install
 - **HTTP Client**: Fetch API
 - **Markdown**: React Markdown
 
-
-```
-
 ### Other Providers
 - **Outlook**: smtp-mail.outlook.com:587
 - **Yahoo**: smtp.mail.yahoo.com:587
@@ -139,15 +133,6 @@ npm install
 1. Build the production bundle: `npm run build`
 2. Deploy to static hosting (Vercel, Netlify, Cloudflare Pages)
 3. Update `VITE_SERVER_URL` to production backend URL
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
 
 ## 👨‍💻 Author
 
