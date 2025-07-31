@@ -55,22 +55,7 @@ cd ../Tickr-Frontend
 npm install
 ```
 
-## 🔧 API Endpoints
 
-### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `GET /api/auth/users` - Get all users (Admin only)
-- `POST /api/auth/update-user` - Update user role/skills (Admin only)
-
-### Tickets
-- `POST /api/tickets` - Create new ticket
-- `GET /api/tickets` - Get tickets (filtered by user role)
-- `GET /api/tickets/:id` - Get specific ticket
-- `PUT /api/tickets/:id` - Update ticket status
-
-### Events
-- `POST /api/inngest` - Inngest webhook endpoint
 
 ## 🤖 AI Processing Workflow
 
@@ -125,16 +110,7 @@ npm install
 - **HTTP Client**: Fetch API
 - **Markdown**: React Markdown
 
-## 📧 Email Configuration
 
-The system supports various email providers. Configure your email settings in the backend `.env` file:
-
-### Gmail Configuration
-```env
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USER=your_gmail@gmail.com
-EMAIL_PASS=your_app_password
 ```
 
 ### Other Providers
@@ -172,42 +148,6 @@ EMAIL_PASS=your_app_password
 4. Push to the branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
-## 📝 Development Guidelines
-
-### Code Style
-- Use ES6+ features
-- Follow React best practices
-- Implement proper error handling
-- Write descriptive commit messages
-
-### Testing
-- Test API endpoints with Postman/Insomnia
-- Verify AI analysis accuracy
-- Check email notifications
-- Validate role-based access
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**AI Analysis Not Working**
-- Verify Gemini API key is correct
-- Check API quota and limits
-- Ensure proper JSON parsing in AI response
-
-**Email Notifications Failing**
-- Verify email credentials
-- Check SMTP settings
-- Ensure proper firewall configuration
-
-**Database Connection Issues**
-- Confirm MongoDB is running
-- Check connection string format
-- Verify network connectivity
-
-## 📄 License
-
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
 
 ## 👨‍💻 Author
 
