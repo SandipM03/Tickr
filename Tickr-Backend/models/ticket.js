@@ -11,7 +11,7 @@ const ticketSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"  
     },
-    assingnedTo:{
+    assignedTo:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
         default:null

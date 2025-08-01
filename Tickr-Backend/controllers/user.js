@@ -6,9 +6,9 @@ import {inngest } from '../innegest/client.js'
 export const signup= async (req, res)=>{
     const {email, password, skills = []} = req.body;
     try {
-        if (!email || !password) {
-            return res.status(400).json({ error: "Email and password are required" });
-        }
+        // if (!email || !password) {
+        //     return res.status(400).json({ error: "Email and password are required" });
+        // }
         const hashed = await brcrypt.hash(password, 10);
         const user = await User.create({ email, password: hashed, skills });
         //fire inngest event
@@ -29,9 +29,9 @@ export const signup= async (req, res)=>{
 export const login = async (req, res) => {
     const { email, password } = req.body;
     try {
-        if (!email || !password) {
-            return res.status(400).json({ error: "Email and password are required" });
-        }
+        // if (!email || !password) {
+        //     return res.status(400).json({ error: "Email and password are required" });
+        // }
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(401).json({ error: "User not found" });
