@@ -15,7 +15,7 @@ export default function Tickets() {
         method: "GET",
       });
       const data = await res.json();
-      setTickets(data.tickets || []);
+      setTickets(data || []);
     } catch (err) {
       console.error("Failed to fetch tickets:", err);
     }
@@ -23,6 +23,7 @@ export default function Tickets() {
 
   useEffect(() => {
     fetchTickets();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = (e) => {
@@ -90,7 +91,7 @@ export default function Tickets() {
           <Link
             key={ticket._id}
             className="card shadow-md p-4 bg-gray-800"
-            to={`/tickets/${ticket._id}`}
+            to={`/ticket/${ticket._id}`}
           >
             <h3 className="font-bold text-lg">{ticket.title}</h3>
             <p className="text-sm">{ticket.description}</p>

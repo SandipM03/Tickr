@@ -5,7 +5,13 @@ const Signup = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const handleChange = (e) => {
-    setForm({...from, [e.target.name]: e.target.value})
+    if (e.target.name === 'skills') {
+      // Convert comma-separated string to array
+      const skillsArray = e.target.value.split(',').map(skill => skill.trim()).filter(Boolean);
+      setForm({...from, [e.target.name]: skillsArray});
+    } else {
+      setForm({...from, [e.target.name]: e.target.value});
+    }
   }
   const handleSignup= async (e)=>{
     e.preventDefault()
@@ -66,7 +72,7 @@ const Signup = () => {
             name="skills"
             placeholder="Skills (comma separated)"
             className="input input-bordered"
-            value={from.skills}
+            value={Array.isArray(from.skills) ? from.skills.join(', ') : from.skills}
             onChange={handleChange}
           />
 
