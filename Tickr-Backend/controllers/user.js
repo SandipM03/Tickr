@@ -154,9 +154,11 @@ export const promoteToModerator = async (req, res) => {
         });
 
     } catch (error) {
+        console.error('Promote to moderator error:', error);
         res.status(500).json({
             error: "Failed to promote user",
-            details: error.message
+            details: error.message,
+            stack: error.stack
         });
     }
 };
