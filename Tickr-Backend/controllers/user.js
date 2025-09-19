@@ -1,4 +1,4 @@
-import brcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import User from '../models/user.js';
 import jwt from 'jsonwebtoken';
 import {inngest } from '../innegest/client.js'
@@ -9,7 +9,7 @@ export const signup= async (req, res)=>{
         // if (!email || !password) {
         //     return res.status(400).json({ error: "Email and password are required" });
         // }
-        const hashed = await brcrypt.hash(password, 10);
+        const hashed = await bcrypt.hash(password, 10);
         const user = await User.create({ email, password: hashed, skills });
         //fire inngest event
         await inngest.send({
@@ -36,7 +36,7 @@ export const login = async (req, res) => {
         if (!user) {
             return res.status(401).json({ error: "User not found" });
         }
-        const isMatch = await brcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(401).json({ error: "Invalid credentials" });
         }
